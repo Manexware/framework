@@ -93,6 +93,7 @@ public class Schedules extends BaseFragment  implements ISyncStatusObserverListe
     public Class<Schedule> database() {
         return Schedule.class;
     }
+
     @Override
     public boolean onSearchViewTextChange(String newFilter) {
         return false;
