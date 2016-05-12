@@ -22,7 +22,6 @@ package com.odoo.base.addons.res;
 import android.content.Context;
 import android.net.Uri;
 
-import com.odoo.App;
 import com.odoo.core.orm.ODataRow;
 import com.odoo.core.orm.OModel;
 import com.odoo.core.orm.OValues;
@@ -38,8 +37,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ResPartner extends OModel {
-    public static final String AUTHORITY = App.APPLICATION_ID +
-            ".core.provider.content.sync.res_partner";
+//    public static final String AUTHORITY = App.APPLICATION_ID +
+//            ".core.provider.content.sync.res_partner";
+
+    public static final String AUTHORITY = "com.odoo.core.provider.res_partner";
 
     OColumn name = new OColumn("Name", OVarchar.class).setSize(100).setRequired();
     OColumn is_company = new OColumn("Is Company", OBoolean.class).setDefaultValue(false);
@@ -69,6 +70,17 @@ public class ResPartner extends OModel {
         setHasMailChatter(true);
     }
 
+    public static String getContact(Context context, int row_id) {
+        ODataRow row = new ResPartner(context, null).browse(row_id);
+        String contact;
+        if (row.getString("mobile").equals("false")) {
+            contact = row.getString("phone");
+        } else {
+            contact = row.getString("mobile");
+        }
+        return contact;
+    }
+
     @Override
     public Uri uri() {
         return buildURI(AUTHORITY);
@@ -84,17 +96,6 @@ public class ResPartner extends OModel {
             e.printStackTrace();
         }
         return "";
-    }
-
-    public static String getContact(Context context, int row_id) {
-        ODataRow row = new ResPartner(context, null).browse(row_id);
-        String contact;
-        if (row.getString("mobile").equals("false")) {
-            contact = row.getString("phone");
-        } else {
-            contact = row.getString("mobile");
-        }
-        return contact;
     }
 
     public String getAddress(ODataRow row) {

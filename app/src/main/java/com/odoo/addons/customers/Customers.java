@@ -66,11 +66,6 @@ public class Customers extends BaseFragment implements ISyncStatusObserverListen
     private ListView mPartnersList = null;
     private OCursorListAdapter mAdapter = null;
     private boolean syncRequested = false;
-
-    public enum Type {
-        Customer, Supplier, Company
-    }
-
     private Type mType = Type.Customer;
 
     @Override
@@ -207,13 +202,11 @@ public class Customers extends BaseFragment implements ISyncStatusObserverListen
         return extra;
     }
 
-
     @Override
     public void onStatusChange(Boolean refreshing) {
         // Sync Status
         getLoaderManager().restartLoader(0, null, this);
     }
-
 
     @Override
     public void onRefresh() {
@@ -272,10 +265,14 @@ public class Customers extends BaseFragment implements ISyncStatusObserverListen
         IntentUtils.startActivity(getActivity(), CustomerDetails.class, data);
     }
 
-
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         ODataRow row = OCursorUtils.toDatarow((Cursor) mAdapter.getItem(position));
         loadActivity(row);
+    }
+
+
+    public enum Type {
+        Customer, Supplier, Company
     }
 }

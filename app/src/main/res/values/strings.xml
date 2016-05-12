@@ -1,20 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Odoo</string>
-    <string name="sync_label_customers">Customers</string>
-    <string name="toast_information_saved">Information Saved</string>
-    <string name="toast_image_size_too_large">Image size too large !</string>
-    <string name="label_no_customer_found">No Customer Found !</string>
-    <string name="message_to">Message to %s</string>
-    <string name="add_internal_note">Add and internal note</string>
-    <string name="internal_note_hint">Add an internal note that will not be sent to the followers</string>
+    <!-- Framework Strings BEGIN -->
+    <string name="app_name">Impulse</string>
+    <string name="sync_label_customers">Clientes</string>
+    <string name="sync_label_schedules">Agenda</string>
+    <string name="toast_information_saved">Informaión Grabada</string>
+    <string name="toast_image_size_too_large">El tamño de la imagen es muy grande !</string>
+    <string name="label_no_customer_found">Cliente no encontrado !</string>
+    <string name="label_no_schedule_found">Registro no encontrado !</string>
+    <string name="message_to">Mensaje a %s</string>
+    <string name="add_internal_note">Añadir nota interna</string>
+    <string name="internal_note_hint">Añadir una nota interna que no será enviada a los seguidores</string>
     <string name="label_log_note">Log note</string>
-    <string name="label_send_message"><u>Send a message</u></string>
+    <string name="label_send_message"><u>Enviar un mensaje</u></string>
     <string name="label_log_an_internal_note"><u>Log an internal note</u></string>
-    <string name="label_version_build">Build</string>
+    <string name="label_version_build">Construir</string>
     <string name="toast_permission_download_storage">Storage permission required to create downloaded file on your sdcard.</string>
     <string name="toast_permission_download_storage_help">Storage permission required to store downloaded files on sdcard of your phone. Please grant permission for use this feature</string>
     <string name="alert_permission_help">Some of permission required to start application. Please grant permission from application settings.</string>
-    <string name="confirm_are_you_sure_want_to_delete">Are you sure want to delete ?</string>
-    <string name="toast_record_deleted">Record deleted</string>
+    <string name="confirm_are_you_sure_want_to_delete">Esta seguro de borrar ?</string>
+    <string name="toast_record_deleted">Registro borrado</string>
+    <!-- Framework Strings END -->
+
+    <!-- Framework Table related strings BEGIN -->
+    <string name="table_res_company">ResCompany</string>
+    <string name="table_res_country">ResCountry</string>
+    <string name="table_res_currency">ResCurrency</string>
+    <string name="table_res_partner">ResPartner</string>
+    <string name="table_res_user">ResUsers</string>
+    <!-- Framework Table related strings END -->
+
+    <!-- Fragment name related strings BEGIN -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="fragment_partners">Partners</string>
+    <string name="fragment_sync">Sync</string>
+    <!-- Fragment name related strings END -->
+
+    <!-- Network Connection Strings BEGIN -->
+    <string name="network_alert_title">Internet Connection Disabled</string>
+    <string name="network_alert_message">Turn on Internet Connection</string>
+    <!-- Network Connection Strings END -->
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

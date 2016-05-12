@@ -21,6 +21,7 @@ package com.odoo.base.addons;
 
 import android.content.Context;
 
+import com.odoo.addons.schedules.models.Schedule;
 import com.odoo.base.addons.ir.IrAttachment;
 import com.odoo.base.addons.ir.IrModel;
 import com.odoo.base.addons.mail.MailMessage;

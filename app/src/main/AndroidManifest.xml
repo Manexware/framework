@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.odoo">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -96,13 +97,13 @@
 
         <!-- Sync Provider & Service  // -->
         <provider
-            android:name="com.odoo.addons.customers.providers.CustomersSyncProvider"
-            android:authorities="${applicationId}.core.provider.content.sync.res_partner"
+            android:name=".addons.customers.providers.CustomersSyncProvider"
+            android:authorities="com.odoo.core.provider.res_partner"
             android:label="@string/sync_label_customers"
             android:multiprocess="true" />
 
         <service
-            android:name="com.odoo.addons.customers.services.CustomerSyncService"
+            android:name=".addons.customers.services.CustomerSyncService"
             android:exported="true"
             android:process=":sync_customer">
             <intent-filter>
@@ -114,9 +115,29 @@
                 android:resource="@xml/customer_sync_adapter" />
         </service>
 
+        <provider
+            android:name=".addons.schedules.providers.SchedulesSyncProvider"
+            android:authorities="com.odoo.core.im.provider.content.sync.im_schedule"
+            android:label="@string/sync_label_schedules"
+            android:multiprocess="true" />
+
+        <service
+            android:name=".addons.schedules.services.ScheduleSyncService"
+            android:exported="true"
+            android:process=":sync_schedule">
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.content.SyncAdapter"
+                android:resource="@xml/schedule_sync_adapter" />
+        </service>
+
         <activity
-            android:name="com.odoo.addons.customers.CustomerDetails"
+            android:name=".addons.customers.CustomerDetails"
             android:windowSoftInputMode="adjustPan" />
+
     </application>
 
 </manifest>

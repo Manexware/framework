@@ -146,7 +146,7 @@ public class OdooAccountQuickManage extends AppCompatActivity implements View.On
         edtPassword = (EditText) findViewById(R.id.newPassword);
         edtPassword.setError(null);
         if (TextUtils.isEmpty(edtPassword.getText())) {
-            edtPassword.setError("Password required");
+            edtPassword.setError("Clave requerida");
             edtPassword.requestFocus();
         }
         user.setPassword(edtPassword.getText().toString());
@@ -195,7 +195,7 @@ public class OdooAccountQuickManage extends AppCompatActivity implements View.On
                 getApplicationContext().startActivity(intent);
             } else {
                 edtPassword.setText("");
-                edtPassword.setError("Password required");
+                edtPassword.setError("Clave requerida");
             }
         }
     }

@@ -322,6 +322,26 @@ public class CustomerDetails extends OdooCompatActivity
         }
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(KEY_MODE, mEditMode);
+        outState.putString(KEY_NEW_IMAGE, newImage);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        OValues values = fileManager.handleResult(requestCode, resultCode, data);
+        if (values != null && !values.contains("size_limit_exceed")) {
+            newImage = values.getString("datas");
+            userImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            userImage.setColorFilter(null);
+            userImage.setImageBitmap(BitmapUtils.getBitmapImage(this, newImage));
+        } else if (values != null) {
+            Toast.makeText(this, R.string.toast_image_size_too_large, Toast.LENGTH_LONG).show();
+        }
+    }
 
     private class BigImageLoader extends AsyncTask<Integer, Void, String> {
 
@@ -354,27 +374,6 @@ public class CustomerDetails extends OdooCompatActivity
                     setCustomerImage();
                 }
             }
-        }
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putBoolean(KEY_MODE, mEditMode);
-        outState.putString(KEY_NEW_IMAGE, newImage);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        OValues values = fileManager.handleResult(requestCode, resultCode, data);
-        if (values != null && !values.contains("size_limit_exceed")) {
-            newImage = values.getString("datas");
-            userImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            userImage.setColorFilter(null);
-            userImage.setImageBitmap(BitmapUtils.getBitmapImage(this, newImage));
-        } else if (values != null) {
-            Toast.makeText(this, R.string.toast_image_size_too_large, Toast.LENGTH_LONG).show();
         }
     }
 }
